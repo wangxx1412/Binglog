@@ -15,21 +15,21 @@ class Home extends React.Component {
 
 componentDidMount() {
   const { onLoad } = this.props;
-
+  //Set the state of articles when loading(before rendering)
   axios('/api/articles')
     .then((res) => onLoad(res.data));
 }
 
 handleDelete(id) {
   const { onDelete } = this.props;
-
+  //Delete the article by id and then return new state of articles (form reducer)
   return axios.delete(`/api/articles/${id}`)
     .then(() => onDelete(id));
 }
 
 handleEdit(article) {
   const { setEdit } = this.props;
-
+  //set articleToEdit true
   setEdit(article);
 }
 
@@ -40,7 +40,7 @@ handleEdit(article) {
       <div className="container">
         <div className="row pt-5">
           <div className="col-12 col-lg-6 offset-lg-3">
-            <h1 className="text-center">LightBlog</h1>
+            <h1 className="text-center">Binglog</h1>
           </div>
           <Form />
         </div>
@@ -79,7 +79,7 @@ handleEdit(article) {
 const mapStateToProps = state => ({
   articles: state.home.articles,
 });
-
+//Note: actions are here
 const mapDispatchToProps = dispatch => ({
   onLoad: data => dispatch({ type: 'HOME_PAGE_LOADED', data }),
   onDelete: id => dispatch({ type: 'DELETE_ARTICLE', id }),

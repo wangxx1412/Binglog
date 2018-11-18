@@ -65,19 +65,19 @@ class Form extends React.Component {
           onChange={(ev) => this.handleChangeField('title', ev)}
           value={title}
           className="form-control my-3"
-          placeholder="Article Title"
+          placeholder="Title"
         />
         <textarea
           onChange={(ev) => this.handleChangeField('body', ev)}
           className="form-control my-3"
-          placeholder="Article Body"
+          placeholder="Body"
           value={body}>
         </textarea>
         <input
           onChange={(ev) => this.handleChangeField('author', ev)}
           value={author}
           className="form-control my-3"
-          placeholder="Article Author"
+          placeholder="Author"
         />
         <button onClick={this.handleSubmit} className="btn btn-primary float-right">{articleToEdit ? 'Update' : 'Submit'}</button>
       </div>

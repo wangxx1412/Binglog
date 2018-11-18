@@ -17,13 +17,15 @@ app.use(require('morgan')('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({ secret: 'LightBlog', cookie: { maxAge: 60000 }, resave: false, saveUninitialized: false }));
+app.use(session({ secret: 'Binglog', cookie: { maxAge: 60000 }, resave: false, saveUninitialized: false }));
 
 if(!isProduction) {
   app.use(errorHandler());
 }
 
-mongoose.connect('mongodb://wangxx1412:jhsd9008@ds255282.mlab.com:55282/binglog',{ useNewUrlParser: true });
+const keys = require('./keys/keys');
+
+mongoose.connect(keys.mongoURI,{ useNewUrlParser: true });
 mongoose.set('debug', true);
 
 // Add models
